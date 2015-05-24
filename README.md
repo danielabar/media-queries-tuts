@@ -6,6 +6,7 @@
   - [What are Media Queries?](#what-are-media-queries)
   - [Viewport Width](#viewport-width)
   - [Simplifying Designs for print](#simplifying-designs-for-print)
+  - [HTML and CSS Media Queries](#html-and-css-media-queries)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -65,10 +66,39 @@ To hide elements, for example navigation:
 ```
 
 To make up the `print.css` stylesheet apply _only_ when the document is being printed,
-use an html media query in the document head:
+use an html media query in the document head, specifying `print` as the _media type_.
 
 ```
 <link rel="stylesheet" href="css/print.css" media="print">
 ```
+
 Note that the main stylesheet defined just before is still applied.
 Use `print.css` to _override_ styles that should be modified for printing.
+
+## HTML and CSS Media Queries
+
+[HTML](site03/index.html) | [CSS](site03/css/styles.css)
+
+An alternative to media query in html, can specify it in the css file, for example, print styles:
+
+```css
+@media print {
+
+  header h1 {
+    background-color: transparent;
+    color: #000;
+  }
+
+  .main-menu,
+  .advertisement {
+    display: none;
+  }
+
+}
+```
+
+One more way to specify media queries is with css `@import`, for example:
+
+```css
+@import url("print.css") print;
+```
