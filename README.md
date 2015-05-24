@@ -1,3 +1,14 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
+
+- [CSS Media Queries Inside Out](#css-media-queries-inside-out)
+  - [What are Media Queries?](#what-are-media-queries)
+  - [Viewport Width](#viewport-width)
+  - [Simplifying Designs for print](#simplifying-designs-for-print)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 CSS Media Queries Inside Out
 ==========
 
@@ -32,4 +43,32 @@ Setting initial-scale to 1 makes it zoom out to 100%.
 
 ## Simplifying Designs for print
 
-[HTML](site02/index.html) | [CSS](site02/css/styles.css)
+[HTML](site02/index.html) | [Print CSS](site02/css/print.css)
+
+For example, when printing page, just show essential information, don't need navigation and advertisement.
+
+To hide elements, for example navigation:
+
+```
+<nav class="main-menu">
+  <ul>
+    <li><a class="active" href="#">Home</a></li>
+    ... menu items
+  </ul>
+</nav>
+```
+
+```css
+.main-menu {
+  display: none;
+}
+```
+
+To make up the `print.css` stylesheet apply _only_ when the document is being printed,
+use an html media query in the document head:
+
+```
+<link rel="stylesheet" href="css/print.css" media="print">
+```
+Note that the main stylesheet defined just before is still applied.
+Use `print.css` to _override_ styles that should be modified for printing.
