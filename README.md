@@ -1,7 +1,11 @@
+CSS Media Queries Inside Out
+==========
+
+> Learning CSS Media Queries with Tuts Plus [course](http://webdesign.tutsplus.com/courses/media-queries-inside-out).
+
+__Table of Contents__
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
-
 - [CSS Media Queries Inside Out](#css-media-queries-inside-out)
   - [What are Media Queries?](#what-are-media-queries)
   - [Viewport Width](#viewport-width)
@@ -12,13 +16,10 @@
   - [Styling the Menu](#styling-the-menu)
   - [Creating a Menu Button](#creating-a-menu-button)
   - [Making the Menu Animate](#making-the-menu-animate)
+  - [Logical Operators](#logical-operators)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-CSS Media Queries Inside Out
-==========
-
-> Learning CSS Media Queries with Tuts Plus [course](http://webdesign.tutsplus.com/courses/media-queries-inside-out).
 
 ## What are Media Queries?
 
@@ -301,5 +302,63 @@ Finally, add css `transition` to small menu, and set `margin-left` to 0 when `bo
     margin-left: 0;
   }
 
+}
+```
+
+## Logical Operators
+
+So far all the media queries we've created have matched only one criteria.
+
+Logical operators (and, or, not, only) can be used to create more complex media queries.
+For example, this would only apply for `screen` _and_ browser width >= 500px
+
+```css
+@media screen and (min-width: 500px) {
+  /* styles here... */
+}
+```
+
+There is no "or" operator, but the same effect can be achieved using ",".
+for example, apply to `screen` or `print` or browser widht >= 500px
+
+```css
+@media screen, print, (min-width: 500px) {
+  /* styles here... */
+}
+```
+
+`not` takes the opposite, for example, this will apply to anything that is not `screen`.
+
+```css
+@media not screen {
+  /* styles here... */
+}
+```
+
+`not` is generally the _last_ thing that's evaluated.
+For example, first evaluate if its `print` and browser width >=500px,
+then apply the `not` of that. If that results in true, then styles would be applied.
+
+```css
+@media not print and (min-width: 500px) {
+  /* styles here... */
+}
+```
+
+Exception to `not` rule above is if "or" (i.e. comma) is used.
+For example, `not` only applies to `print` and min-width: 500px, and the max-width is considered a separate media query.
+
+```css
+@media not print and (min-width: 500px), (max-width: 700px) {
+  /* styles here... */
+}
+```
+
+`only` logical operator provides safeguard for older browsers that might not be compatible with media queries.
+If older browser sees `only`, will ignore this media query.
+
+```css
+@media only screen {
+  /* styles here... */
 }
 ```
