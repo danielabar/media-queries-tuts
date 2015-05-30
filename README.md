@@ -10,6 +10,7 @@
   - [Max Width Media Queries](#max-width-media-queries)
   - [Resizing Content Based on Width](#resizing-content-based-on-width)
   - [Styling the Menu](#styling-the-menu)
+  - [Creating a Menu Button](#creating-a-menu-button)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -215,6 +216,48 @@ Also completely change the look of the menu to be vertical, different text and b
 
   .main-menu ul li a.active {
     color: #000;
+  }
+
+}
+```
+
+## Creating a Menu Button
+
+[HTML](site07/index.html) | [CSS](site07/css/styles.css)
+
+Start by making the text based menu "disappear" at smaller widths.
+
+```css
+@media (max-width: 500px) {
+
+  .main-menu {
+    /* ... other styles */
+    margin-left: -100%;
+  }
+
+}
+```
+
+Then make add an activation control in the html that will make the menu appear.
+
+```
+<nav class="small-menu"><span class="nav-activate">+Menu</span></nav>
+```
+
+This control should only be visible on smaller widths and hidden in the default styles:
+
+```css
+nav.small-menu {
+  display:none;
+}
+
+@media (max-width: 500px) {
+
+  /* ... other styles */
+
+  nav.small-menu {
+    display: block;
+    /* ... other small menu styles */
   }
 
 }
