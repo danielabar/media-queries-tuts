@@ -7,6 +7,8 @@
   - [Viewport Width](#viewport-width)
   - [Simplifying Designs for print](#simplifying-designs-for-print)
   - [HTML and CSS Media Queries](#html-and-css-media-queries)
+  - [Max Width Media Queries](#max-width-media-queries)
+  - [Resizing Content Based on Width](#resizing-content-based-on-width)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -122,6 +124,46 @@ For example, to change the appearance of the `container` class when the browser 
 
   .container {
     background-color: red;
+  }
+
+}
+```
+
+## Resizing Content Based on Width
+
+[HTML](site05/index.html) | [CSS](site05/css/styles.css)
+
+For example, given a site with main content and side bar laid out in 960px wide container:
+
+```css
+.container { width: 960px; }
+.main-content, .sidebar { float: left; }
+.main-content { width: 600px; }
+.sidebar { width: 300px; }
+```
+
+To adjust layout at browser width <= 960px:
+
+```css
+@media (max-width: 960px) {
+
+  .container {
+    width: auto; /* Otherwise fixed width of 960px overrides max-width */
+    max-width: 800px;
+  }
+
+  /* Use percentages to have content automatically resize */
+  .main-content {
+    width: 67%;
+  }
+
+  .sidebar {
+    width: 33%;
+  }
+
+  /* Make otherwise fixed width image also resize */
+  .advertisement img {
+    width: 100%;
   }
 
 }
