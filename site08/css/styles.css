@@ -1,0 +1,275 @@
+@import url("resets.css");
+@import url("print.css") print;
+
+body {
+  color: #333;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.container {
+  width: 900px;
+  margin: 0 auto;
+}
+
+
+/* ---------------------------------- */
+/* Header */
+/* ---------------------------------- */
+
+header {
+  width: 100%;
+  padding: 20px 0;
+}
+
+header h1 {
+  background-color: #E8117F;
+  color: white;
+  padding: 20px 10px;
+  text-align: center;
+  text-transform: uppercase;
+  width: 300px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+header h3 {
+  color: #999;
+  font-size: 26px;
+  line-height: 34px;
+  text-align: center;
+}
+
+header h3 span {
+  color: #E8117F;
+}
+
+/* ---------------------------------- */
+/* Navigation */
+/* ---------------------------------- */
+
+nav.small-menu {
+  display:none;
+}
+
+.main-menu {
+  width: 96%;
+  border: 1px solid #eee;
+  border-left: none;
+  border-right: none;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.main-menu ul {
+  margin: 0 auto;
+  padding-left: 0;
+  list-style: none;
+}
+
+.main-menu ul li {
+  float: left;
+  margin-right: 20px;
+}
+
+.main-menu ul li a {
+  text-decoration: none;
+  color: #999;
+}
+
+.main-menu ul li a.active {
+  color: #333;
+  font-weight: bold;
+}
+
+
+/* ---------------------------------- */
+/* Content and Sidebar */
+/* ---------------------------------- */
+.main-content,
+.sidebar {
+  float: left;
+  box-sizing: border-box;
+}
+
+.main-content {
+  box-sizing: border-box; /* Make 600px be the final width even after padding is applied */
+  width: 600px;
+  padding-right: 20px;
+}
+
+.sidebar {
+  width: 300px;
+}
+
+dt {
+  float: left;
+  width: 60px;
+  height: 60px;
+  background-color: #777;
+  color: #fff;
+  font-size: 40px;
+  border-radius: 100px;
+  text-align: center;
+
+  /* Making line-height = height allows for vertically aligning text within the circle */
+  line-height: 60px;
+}
+
+dd {
+  margin-left: 70px;
+  margin-bottom: 30px;
+}
+
+dd h4 {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+
+/* ---------------------------------- */
+/* Blog Posts */
+/* ---------------------------------- */
+
+.blog-posts {
+  margin-top: 20px;
+}
+
+.blog-posts h3 {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.blog-posts ul {
+  list-style: none;
+}
+
+.blog-posts ul li {
+  border-bottom: 1px solid #999;
+  padding: 5px;
+  font-size: 12px;
+}
+
+.blog-posts ul li: nth-child(even) {
+  background-color: #eee;
+}
+
+.blog-posts ul li: nth-child(odd) {
+  background-color: #ddd;
+}
+
+.blog-posts .date {
+  color: #777;
+  font-size: 10px;
+  font-style: italic;
+}
+
+
+/* ---------------------------------- */
+/* Media Queries */
+/* ---------------------------------- */
+
+@media (max-width: 960px) {
+
+  .container {
+    width: auto;
+    max-width: 800px;
+  }
+
+  .main-content {
+    width: 67%;
+  }
+
+  .sidebar {
+    width: 33%;
+  }
+
+  .advertisement img {
+    width: 100%;
+  }
+
+}
+
+@media (max-width: 500px) {
+
+  /* Breathing room on smaller screens */
+  body {
+    padding: 0 5px;
+  }
+
+  dt {
+    width: 30px;
+    height: 30px;
+    font-size: 26px;
+    line-height: 30px;
+  }
+
+  /* Bring down the spacing now that the dt's are smaller */
+  dd {
+    margin-left: 45px;
+  }
+
+  .nav-activate {
+    cursor: pointer;
+  }
+
+  /* We have to get creative with padding and positioning because body has padding of 5px */
+  nav.small-menu {
+    display: block;
+    position: relative;
+    left: -5px;
+    width: 100%;
+    box-sizing: content-box; /* This will make the element EXPAND when padding is added */
+    padding: 10px 5px;
+    color: #fff;
+    background-color: #777;
+    text-align: right;
+  }
+
+  /* Change look of menu */
+  .main-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    height: 100%;
+    width: 200px;
+
+    background-color: #999;
+    border: none;
+    margin: 0;
+    margin-bottom: 0;
+    padding: 10px;
+
+    /* Make this "disappear" */
+    margin-left: -100%;
+
+    /* Animated transition (half second, margin-left property) */
+    transition: .5s margin-left ease;
+  }
+
+  /* Trigger animated menu transition when body has class of active (toggled via JS) */
+  body.active .main-menu {
+    margin-left: 0;
+  }
+
+  .main-menu ul {
+    margin: 0;
+    margin-top: 20px;
+  }
+
+  .main-menu ul li {
+    float: none;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .main-menu ul li a {
+    color: #fff;
+  }
+
+  .main-menu ul li a.active {
+    color: #000;
+  }
+
+}

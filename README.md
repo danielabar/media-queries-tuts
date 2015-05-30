@@ -11,6 +11,7 @@
   - [Resizing Content Based on Width](#resizing-content-based-on-width)
   - [Styling the Menu](#styling-the-menu)
   - [Creating a Menu Button](#creating-a-menu-button)
+  - [Making the Menu Animate](#making-the-menu-animate)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -258,6 +259,46 @@ nav.small-menu {
   nav.small-menu {
     display: block;
     /* ... other small menu styles */
+  }
+
+}
+```
+
+## Making the Menu Animate
+
+[HTML](site08/index.html) | [CSS](site08/css/styles.css) | [JS](site08/js/app.js)
+
+At small widths, when menu button is clicked on, want to make the (hidden) vertical menu slide in.
+
+Start by adding [jQuery CDN](http://jquery.com/download/) to html.
+
+Then make the control (added in previous lesson) clickable:
+
+```css
+.nav-activte {
+  cursor: pointer
+}
+```
+
+Next add some JavaScript (with jQuery) to toggle an `active` class on the `body` element whenever the control is clicked
+
+```javascript
+$('.nav-activate').click(function() {
+  $('body').toggleClass('active');
+});
+```
+
+Finally, add css `transition` to small menu, and set `margin-left` to 0 when `body` has `active` class
+
+```css
+@media (max-width: 500px) {
+
+  .main-menu {
+    transition: .5s margin-left ease;
+  }
+
+  body.active .main-menu {
+    margin-left: 0;
   }
 
 }

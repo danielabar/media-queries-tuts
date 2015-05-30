@@ -1,0 +1,15 @@
+/* ---------------------------------- */
+/* Printable header */
+/* ---------------------------------- */
+header h1 {
+  background-color: transparent;
+  color: #000;
+}
+
+/* ---------------------------------- */
+/* Hide unessential elements */
+/* ---------------------------------- */
+.main-menu,
+.advertisement {
+  display: none;
+}
