@@ -9,6 +9,7 @@
   - [HTML and CSS Media Queries](#html-and-css-media-queries)
   - [Max Width Media Queries](#max-width-media-queries)
   - [Resizing Content Based on Width](#resizing-content-based-on-width)
+  - [Styling the Menu](#styling-the-menu)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -129,6 +130,8 @@ For example, to change the appearance of the `container` class when the browser 
 }
 ```
 
+Styles in media queries _override_ properties set outside of the media queries.
+
 ## Resizing Content Based on Width
 
 [HTML](site05/index.html) | [CSS](site05/css/styles.css)
@@ -164,6 +167,54 @@ To adjust layout at browser width <= 960px:
   /* Make otherwise fixed width image also resize */
   .advertisement img {
     width: 100%;
+  }
+
+}
+```
+
+## Styling the Menu
+
+[HTML](site06/index.html) | [CSS](site06/css/styles.css)
+
+Make the text based menu disappear at smaller screen widths, and replace with bar that says the word "menu",
+and have it animate in and out. Can be done mostly with css, and a little bit of JavaScript (will do in next lesson).
+
+To have the main menu be fixed at the top left of the screen for smaller widths, set its position to fixed.
+Also completely change the look of the menu to be vertical, different text and background colors etc.
+
+```css
+@media (max-width: 500px) {
+
+  .main-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: #999;
+    width: 200px;
+    border: none;
+    margin: 0;
+    margin-bottom: 0;
+    padding: 10px;
+  }
+
+  .main-menu ul {
+    margin: 0;
+    margin-top: 20px;
+  }
+
+  .main-menu ul li {
+    float: none;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .main-menu ul li a {
+    color: #fff;
+  }
+
+  .main-menu ul li a.active {
+    color: #000;
   }
 
 }
