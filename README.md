@@ -103,4 +103,26 @@ One more way to specify media queries is with css `@import`, for example:
 @import url("print.css") print;
 ```
 
-test
+## Max Width Media Queries
+
+[HTML](site04/index.html) | [CSS](site04/css/styles.css)
+
+How to decide on breakpoints? Should be determined by _content_, so that content looks good at all sizes.
+
+Media types are like `screen` or `print`, where styles contained in these will only be applied for that particular media type.
+
+In this case, we're going to use a _media feature_, which works based on the browser's attributes.
+For example, at maximum width of 960px, want layout to change.
+
+Media features are defined in parentheses and look like css attributes.
+For example, to change the appearance of the `container` class when the browser width is <= 960 px:
+
+```css
+@media (max-width: 960px) {
+
+  .container {
+    background-color: red;
+  }
+
+}
+```
